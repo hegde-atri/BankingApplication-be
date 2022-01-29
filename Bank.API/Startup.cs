@@ -49,7 +49,7 @@ namespace Bank.API
              appsettings.json under the parent category of ConnectionStrings.
              */
             services.AddDbContext<BankContext>(opt =>
-                opt.UseSqlServer("Server=sql-banking-app.database.windows.net,1433;Database=sqldb-banking-app;UID=uami-bank-app-db;Authentication=Active Directory Interactive")
+                opt.UseSqlServer(Configuration.GetConnectionString("DeveloperDb"))
                     .UseQueryTrackingBehavior(QueryTrackingBehavior.TrackAll)
                     .EnableSensitiveDataLogging());
             
@@ -64,7 +64,7 @@ namespace Bank.API
             services.AddScoped<IManagerRepository, ManagerRepository>();
             services.AddScoped<IOfficerRepository, OfficerRepository>();
             services.AddScoped<ITellerRepository, TellerRepository>();
-            
+
             // This allows us to use the mapper which can convert Objects to model Objects and vice versa.
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
         }

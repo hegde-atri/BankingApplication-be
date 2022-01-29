@@ -1,4 +1,5 @@
-﻿using System.Dynamic;
+﻿using System;
+using System.Dynamic;
 using System.Linq;
 using Bank.Data.Entities;
 using Microsoft.Data.SqlClient;
@@ -20,20 +21,15 @@ namespace Bank.Data
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<Payee> Payees { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
-        public IConfiguration Configuration { get; }
-
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {    // Here we choose our data source
-            optionsBuilder.UseSqlServer(
-                "Server=sql-banking-app.database.windows.net,1433;Database=sqldb-banking-app;UID=uami-bank-app-db;Authentication=Active Directory Interactive");
-            optionsBuilder.UseSqlServer();
+        {    
             base.OnConfiguring(optionsBuilder);
         }
 
         public BankContext(DbContextOptions<BankContext> options) : base(options)
         {
-            
+
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
