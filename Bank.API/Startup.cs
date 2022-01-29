@@ -49,7 +49,7 @@ namespace Bank.API
              appsettings.json under the parent category of ConnectionStrings.
              */
             services.AddDbContext<BankContext>(opt =>
-                opt.UseSqlServer(Configuration.GetConnectionString("DeveloperDb"))
+                opt.UseSqlServer("Server=sql-banking-app.database.windows.net,1433;Database=sqldb-banking-app;UID=uami-bank-app-db;Authentication=Active Directory Interactive")
                     .UseQueryTrackingBehavior(QueryTrackingBehavior.TrackAll)
                     .EnableSensitiveDataLogging());
             
