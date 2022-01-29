@@ -25,8 +25,8 @@ namespace Bank.API.Controllers.Officer
     {
       try
       {
-        var results = _repository.GetAllTransactionsAsync();
-        return _mapper.Map<TransactionModel[]>(results);
+        var results = await _repository.GetAllTransactionsAsync();
+        return new JsonResult(_mapper.Map<TransactionModel[]>(results));
       }
       catch (Exception e)
       {

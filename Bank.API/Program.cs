@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Bank.Data;
+using Microsoft.Data.SqlClient;
 
 namespace Bank.API
 {
@@ -13,6 +15,7 @@ namespace Bank.API
     {
         public static void Main(string[] args)
         {
+            SqlAuthenticationProvider.SetProvider(SqlAuthenticationMethod.ActiveDirectoryInteractive, new SqlAppAuthenticationProvider());
             CreateHostBuilder(args).Build().Run();
         }
 

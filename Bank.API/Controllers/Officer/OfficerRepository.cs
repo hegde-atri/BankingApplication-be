@@ -112,6 +112,14 @@ namespace Bank.API.Controllers.Officer
       return await query.ToArrayAsync();
     }
 
+    public async Task<Account> GetAccountAsync(string accountNo)
+    {
+      _logger.LogInformation($"Getting account with account no. {accountNo}");
+      IQueryable<Account> query = _context.Accounts
+        .Where(a => a.AccountNumber == accountNo);
+      return await query.FirstOrDefaultAsync();
+    }
+
     public async Task<Transaction[]> GetAllTransactionsAsync()
     {
       _logger.LogInformation("Getting all transactions");

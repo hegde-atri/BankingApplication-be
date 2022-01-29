@@ -27,6 +27,7 @@ namespace Bank.API.Controllers.Officer
         
         
         Task<Account[]> GetAllAccountsAsync();
+        Task<Account> GetAccountAsync(string accountNo);
         Task<Transaction[]> GetAllTransactionsAsync();
   }
 }

@@ -1,4 +1,6 @@
-/****** Object:  Table [dbo].[Accounts]    Script Date: 07/01/2022 12:18:21 ******/
+// CREATE USER [uami-bank-app-db] FROM EXTERNAL PROVIDER;
+// ALTER ROLE db_owner ADD MEMBER [uami-bank-app-db]
+
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON

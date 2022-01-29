@@ -24,12 +24,10 @@ namespace Bank.Data
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {    // Here we choose our data source.
-
+        {    // Here we choose our data source
             optionsBuilder.UseSqlServer(
-                // Replace XXX with your sql details.
-                // Replace X with your Date source.
-                "Data Source= X; Initial Catalog=sqldb-banking-app; User ID=XXX; Password=XXX");
+                "Server=sql-banking-app.database.windows.net,1433;Database=sqldb-banking-app;UID=uami-bank-app-db;Authentication=Active Directory Interactive");
+            optionsBuilder.UseSqlServer();
             base.OnConfiguring(optionsBuilder);
         }
 
