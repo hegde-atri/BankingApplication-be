@@ -16,6 +16,7 @@ namespace Bank.API.Controllers.Manager
     }
         public void Add<T>(T entity) where T : class
     {
+      // in dev branch
       throw new System.NotImplementedException();
     }
 
