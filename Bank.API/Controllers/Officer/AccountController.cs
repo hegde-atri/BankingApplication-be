@@ -42,29 +42,14 @@ namespace Bank.API.Controllers.Officer
 
       return BadRequest();
     }
-
-    // The officer must be able to view all the accounts, but he must also be able to see if a certain account number
-    // is already in use when creating account Objects for a new customer.
-    [HttpGet("all/{selector}")]
-    public async Task<ActionResult<AccountModel[]>> Get(string selector)
+    
+    [HttpGet]
+    public async Task<ActionResult<AccountModel[]>> Get()
     {
       try
       {
-        if (selector == "0")
-        {
-          // If selector is 0, return all accounts
-          var results = await _repository.GetAllAccountsAsync();
-          return _mapper.Map<AccountModel[]>(results);
-        }
-        else if (selector.Length == 16)
-        {
-          var result = new Account[]{await _repository.GetAccountAsync(selector)};
-          if (result == null) return Ok();
-          return StatusCode(StatusCodes.Status409Conflict);
-        }
-        // If selector is something else, then return bad request
-        return BadRequest();
-
+        var results = await _repository.GetAllAccountsAsync();
+        return _mapper.Map<AccountModel[]>(results);
       }
       catch (Exception e)
       {

@@ -12,6 +12,7 @@ namespace Bank.Data.Entities
     public string Firstname { get; set; }
     [MaxLength(25)]
     public string Lastname { get; set; }
+    [MaxLength(50)]
     public string Email { get; set; }
     [MaxLength(25)]
     public string Gender { get; set; }

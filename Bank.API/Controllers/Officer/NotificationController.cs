@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Bank.API.Controllers.Officer
 {
+  [ApiController]
+  [Route("api/officer/[controller]")]
   public class NotificationController: ControllerBase
   {
     
@@ -64,6 +66,28 @@ namespace Bank.API.Controllers.Officer
 
       return BadRequest();
     }
+
+    [HttpPost]
+    public async Task<ActionResult<NotificationModel>> Post(NotificationModel model)
+        {
+          try
+          {
+            if (model?.CustomerId < 1) return BadRequest();
+            var notification = _mapper.Map<Notification>(model);
+            _repository.Add(notification);
+
+            if (await _repository.SaveChangesAsync())
+            {
+              return Created("" ,_mapper.Map<NotificationModel>(notification));
+            }
+          }
+          catch (Exception e)
+          {
+            return StatusCode(StatusCodes.Status500InternalServerError, e);
+          }
+
+          return BadRequest();
+        }
 
     [HttpDelete("{notificationId}")]
     public async Task<IActionResult> Delete(int notificationId)
