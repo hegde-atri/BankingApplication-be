@@ -10,7 +10,6 @@ using Microsoft.AspNetCore.Routing;
 
 namespace Bank.API.Controllers.Customer
 {
-  [EnableCors("_myAllowSpecificOrigins")]
   [ApiController]
   [Route("api/customer/[controller]")]
   public class TransferController: ControllerBase
