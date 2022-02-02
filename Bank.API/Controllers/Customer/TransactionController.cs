@@ -10,8 +10,6 @@ using Microsoft.AspNetCore.Routing;
 
 namespace Bank.API.Controllers.Customer
 {
-  //  TODO figure out how a customer transaction would translate to an API being called.
-  [EnableCors("_myAllowSpecificOrigins")]
   [ApiController]
   [Route("api/customer/[controller]")]
   public class TransactionController : ControllerBase
@@ -53,6 +51,9 @@ namespace Bank.API.Controllers.Customer
 
       return BadRequest();
     }
+    
+
+    
     
     
     //  !! METHOD DEPRECATED IN FAVOUR OF THE TRANSFER CONTROLLER CLASS !!

@@ -38,6 +38,27 @@ namespace Bank.API.Controllers.Customer
       }
       
     }
+    
+    [HttpPut("{email}")]
+    public async Task<ActionResult<CustomerModel>> Put(string email, CustomerModel model)
+    {
+      try
+      {
+        var old = await _repository.GetCustomerAsync(email);
+        if (old == null) return BadRequest("customer not found");
+
+        // _mapper.Map(model, old);
+        // Here we only want the customer to be able to change their budget
+        old.Budget = model.Budget;
+        if (await _repository.SaveChangesAsync()) return _mapper.Map<CustomerModel>(old);
+      }
+      catch (Exception e)
+      {
+        return StatusCode(StatusCodes.Status500InternalServerError, e);
+      }
+
+      return BadRequest();
+    }
 
 
 
