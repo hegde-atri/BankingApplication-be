@@ -1,6 +1,8 @@
-﻿using Bank.Data;
+﻿using System.Linq;
+using Bank.Data;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Bank.API.Controllers.Manager
 {
@@ -14,25 +16,20 @@ namespace Bank.API.Controllers.Manager
         _context = context;
         _logger = logger;
     }
-        public void Add<T>(T entity) where T : class
-    {
-      // in dev branch
-      throw new System.NotImplementedException();
-    }
-
-    public async Task<bool> SaveChangesAsync()
-    {
-      throw new System.NotImplementedException();
-    }
 
     public async Task<Data.Entities.Customer> GetCustomerAsync(int customerId)
     {
+      // This is for a feature that will be implemented if I have enough time.
       throw new System.NotImplementedException();
     }
 
     public async Task<Data.Entities.Customer[]> GetAllCustomersAsync()
     {
-      throw new System.NotImplementedException();
+      _logger.LogInformation($"Getting all customers");
+      IQueryable<Data.Entities.Customer> query = _context.Customers
+        .OrderBy(c => c.ModifiedDate);
+      
+      return await query.ToArrayAsync();
     }
   }
 }

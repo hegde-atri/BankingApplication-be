@@ -28,7 +28,7 @@ namespace Bank.API.Controllers.Teller
     }
 
     [HttpGet("{accountNo}")]
-    public async Task<ActionResult<bool>> Get(string accountNo)
+    public async Task<ActionResult<AccountModel>> Get(string accountNo)
     {
       try
       {
@@ -36,8 +36,8 @@ namespace Bank.API.Controllers.Teller
         if (accountNo.Length != 16) return BadRequest();
 
         var result = await _repository.GetAccountByNumberAsync(accountNo);
-        if (result == null) return false;
-        return true;
+        if (result == null) return null;
+        return _mapper.Map<AccountModel>(result);
       }
       catch (Exception e)
       {
