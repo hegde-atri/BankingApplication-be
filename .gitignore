@@ -6,4 +6,5 @@ riderModule.iml
 .idea/
 .vs/
 .vscode/
+/Bank.API/appsettings.json
 Bank.API/appsettings.json

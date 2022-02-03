@@ -25,6 +25,10 @@ namespace Bank.API.Models
     public string Gender { get; set; }
     
     [Required]
+    [MaxLength(50)]
+    public string Email { get; set; }
+    
+    [Required]
     [DataType(DataType.Date)]
     [DisplayFormat(DataFormatString="{0:dd-MM-yyyy")]
     public DateTime DoB { get; set; }

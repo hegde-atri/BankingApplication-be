@@ -15,7 +15,7 @@ namespace Bank.API.Controllers.Officer
         Task<bool> SaveChangesAsync();
 
 
-        Task<Data.Entities.Customer> GetCustomerAsync(int CustomerId);
+        Task<Data.Entities.Customer> GetCustomerAsync(int customerId);
         // Task<Data.Entities.Customer> GetCustomerByDetailsAsync(CustomerVerificationModel model);
 
         Task<Data.Entities.Customer> GetCustomerByEmailAsync(string email);
@@ -23,6 +23,7 @@ namespace Bank.API.Controllers.Officer
         Task<Notification> GetNotificationAsync(int notificationId);
 
         Task<Address[]> GetAllAddressesAsync(int customerId);
+        Task<Address> GetAddressAsync(int addressId);
 
         
         

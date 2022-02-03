@@ -85,10 +85,10 @@ namespace Bank.API.Controllers.Officer
     
     public async Task<Notification> GetNotificationAsync(int notificationId)
     {
-      _logger.LogInformation($"Getting notification details of customer {notificationId}.");
+      _logger.LogInformation($"Getting notification with id {notificationId}.");
 
       IQueryable<Notification> query = _context.Notifications
-        .Where(n => n.CustomerId == notificationId);
+        .Where(n => n.NotificationId == notificationId);
 
       return await query.FirstOrDefaultAsync();
     }
@@ -100,6 +100,16 @@ namespace Bank.API.Controllers.Officer
         .Where(a => a.CustomerId == customerId);
       
       return await query.ToArrayAsync();
+    }
+    
+    public async Task<Address> GetAddressAsync(int addressId)
+    {
+      _logger.LogInformation($"Getting address with id {addressId}.");
+
+      IQueryable<Address> query = _context.Addresses
+        .Where(a => a.AddressId == addressId);
+
+      return await query.FirstOrDefaultAsync();
     }
 
     public async Task<Account[]> GetAllAccountsAsync()

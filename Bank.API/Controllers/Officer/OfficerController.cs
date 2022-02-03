@@ -16,7 +16,8 @@ namespace Bank.API.Controllers.Officer
   [Route("/api/officer")]
   public class OfficerController: ControllerBase
   {
-    // The officer should be able to create a customer, view customer transactions and approve customer address/notification changes.
+    // Dummy class used for testing, serves no purpose
+    // will be deleted later
 
     public OfficerController()
     {

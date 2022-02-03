@@ -10,8 +10,6 @@ using Microsoft.AspNetCore.Routing;
 
 namespace Bank.API.Controllers.Customer
 {
-  //  TODO figure out how a customer transaction would translate to an API being called.
-  [EnableCors("_myAllowSpecificOrigins")]
   [ApiController]
   [Route("api/customer/[controller]")]
   public class TransactionController : ControllerBase
@@ -53,41 +51,6 @@ namespace Bank.API.Controllers.Customer
 
       return BadRequest();
     }
-    
-    
-    //  !! METHOD DEPRECATED IN FAVOUR OF THE TRANSFER CONTROLLER CLASS !!
-
-    /*
-     * Post method for a transaction is where I spent quite a lot of time on.
-     * I have decided to just update the account balance everytime a transaction post method is called.
-     */
-    
-    
-    /*[HttpPost]
-    public async Task<ActionResult<TransactionModel>> Post(TransactionModel model)
-    {
-      try
-      {
-        var location = _linkGenerator.GetPathByAction("Get", "Transaction", new { model.TransactionId });
-        if (string.IsNullOrWhiteSpace(location)) return BadRequest();
-        model.AccountId = 1;
-        // we have created the transaction item to be added
-        var transaction = _mapper.Map<Transaction>(model);
-        // now lets update the corresponding account balance
-        _repository.Add(transaction);
-        
-        if (await _repository.SaveChangesAsync())
-        {
-          return Created(location, _mapper.Map<TransactionModel>(transaction));
-        }
-      }
-      catch (Exception e)
-      {
-        return StatusCode(StatusCodes.Status500InternalServerError, e);
-      }
-
-      return BadRequest();
-    }*/
 
 
 
