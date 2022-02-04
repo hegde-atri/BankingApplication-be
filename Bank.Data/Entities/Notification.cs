@@ -7,7 +7,7 @@ namespace Bank.Data.Entities
   {
     public int NotificationId { get; set; }
     public int CustomerId { get; set; }
-    [MaxLength(25)]
+    [MaxLength(50)]
     public string Email { get; set; }
     [MaxLength(15)]
     public string Phone { get; set; }
@@ -22,10 +22,10 @@ namespace Bank.Data.Entities
     // This is for whether they want updates sent to this notification.
     [MaxLength(15)]
     public string Status { get; set; }
-    [MaxLength(25)]
+    [MaxLength(50)]
     public string CreatedBy { get; set; }
     public DateTime CreatedDate { get; set; }
-    [MaxLength(25)]
+    [MaxLength(50)]
     public string ModifiedBy { get; set; }
     public DateTime ModifiedDate { get; set; }
     

@@ -10,24 +10,21 @@ namespace Bank.API.Models
    * retrieved from the front end
    */
   {
+    [Required]
     public string AccountNumber1{ get; set; }
-    public string Description1 { get; set; }
-    public DateTime TransDateTime1 { get; set; }
+    [Required]
     public string Type1 { get; set; }
-    public string CreatedBy1 { get; set; }
-    // The 2 commented parameters will be set by the API.
-    
-    // public DateTime CreatedDate1 { get; set; }
-    
+    [Required]
     public string AccountNumber2 { get; set; }
-    public string Description2 { get; set; }
-    public DateTime TransDateTime2 { get; set; }
+    [Required]
     public string Type2 { get; set; }
-    public string CreatedBy2 { get; set; }
-    // public DateTime CreatedDate2 { get; set; }
+    [Required]
+    public string CreatedBy { get; set; }
+    [Required]
+    public DateTime CreatedDate { get; set; }
+    [Required]
+    public string Description { get; set; }
     
-    
-
     [Required]
     [Column(TypeName = "decimal(18,2)")]
     public decimal Amount { get; set; }

@@ -25,10 +25,10 @@ namespace Bank.Data.Entities
     public string Type { get; set; }
     [MaxLength(15)]
     public string Status { get; set; }
-    [MaxLength(25)]
+    [MaxLength(50)]
     public string CreatedBy { get; set; }
     public DateTime CreatedDate { get; set; }
-    [MaxLength(25)]
+    [MaxLength(50)]
     public string ModifiedBy { get; set; }
     public DateTime ModifiedDate { get; set; }
   }
