@@ -19,7 +19,7 @@ namespace Bank.Data.Entities
     [MaxLength(250)]
     public string Description { get; set; }
     public DateTime TransDateTime { get; set; }
-    [MaxLength(25)]
+    [MaxLength(50)]
     public string CreatedBy { get; set; }
     public DateTime CreatedDate { get; set; }
     [MaxLength(6)]

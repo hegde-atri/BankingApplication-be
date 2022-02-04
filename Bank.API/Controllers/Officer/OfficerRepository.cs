@@ -115,9 +115,7 @@ namespace Bank.API.Controllers.Officer
     public async Task<Account[]> GetAllAccountsAsync()
     {
       _logger.LogInformation("Getting all Accounts for officer");
-      IQueryable<Account> query = _context.Accounts
-        // Example of aggregate sql function using EF Core context
-        .OrderBy(a => a.Balance);
+      IQueryable<Account> query = _context.Accounts;
 
       return await query.ToArrayAsync();
     }

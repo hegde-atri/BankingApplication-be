@@ -87,6 +87,7 @@ namespace Bank.API
                 .AllowAnyOrigin());
 
             app.UseAuthentication();
+            //TODO: use authorization;
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
