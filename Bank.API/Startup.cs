@@ -45,14 +45,14 @@ namespace Bank.API
             });
             
             // Adds Microsoft Identity platform (Azure AD B2C) support to protect this Api
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddMicrosoftIdentityWebApi(options =>
-                    {
-                        Configuration.Bind("AzureAdB2C", options);
-
-                        options.TokenValidationParameters.NameClaimType = "name";
-                    },
-                    options => { Configuration.Bind("AzureAdB2C", options); });
+            // services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            //     .AddMicrosoftIdentityWebApi(options =>
+            //         {
+            //             Configuration.Bind("AzureAdB2C", options);
+            //
+            //             options.TokenValidationParameters.NameClaimType = "name";
+            //         },
+                    // options => { Configuration.Bind("AzureAdB2C", options); });
             // End of the Microsoft Identity platform block 
             
             services.AddDbContext<BankContext>(opt =>
@@ -97,9 +97,9 @@ namespace Bank.API
 
             app.UseRouting();
             
-            app.UseAuthentication();
-            
-            app.UseAuthorization();
+            // app.UseAuthentication();
+            //
+            // app.UseAuthorization();
             
             app.UseCors(x => x.AllowAnyHeader()
                 .AllowAnyMethod()

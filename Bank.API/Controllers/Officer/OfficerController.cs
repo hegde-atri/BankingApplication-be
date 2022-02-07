@@ -12,7 +12,6 @@ using Microsoft.AspNetCore.Routing;
 
 namespace Bank.API.Controllers.Officer
 {
-  [Authorize]
   [ApiController]
   [Route("/api/officer")]
   public class OfficerController: ControllerBase
