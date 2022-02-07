@@ -14,6 +14,8 @@ using Bank.API.Controllers.Officer;
 using Bank.API.Controllers.Teller;
 using Bank.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Identity.Web;
 
 namespace Bank.API
 {
@@ -41,6 +43,22 @@ namespace Bank.API
                             "http://localhost:6600");
                     });
             });
+            
+            // Adds Microsoft Identity platform (Azure AD B2C) support to protect this Api
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddMicrosoftIdentityWebApi(options =>
+                    {
+                        Configuration.Bind("AzureAdB2C", options);
+
+                        options.TokenValidationParameters.NameClaimType = "name";
+                    },
+                    options => { Configuration.Bind("AzureAdB2C", options); });
+            // End of the Microsoft Identity platform block 
+            
+            services.AddDbContext<BankContext>(opt =>
+                opt.UseSqlServer(Configuration.GetConnectionString("DeveloperDb"))
+                    .UseQueryTrackingBehavior(QueryTrackingBehavior.TrackAll)
+                    .EnableSensitiveDataLogging());
 
 
             services.AddControllers();
@@ -48,10 +66,7 @@ namespace Bank.API
             /* Here we register our DBContext, which is BankContext, and we are getting the connection string from
              appsettings.json under the parent category of ConnectionStrings.
              */
-            services.AddDbContext<BankContext>(opt =>
-                opt.UseSqlServer(Configuration.GetConnectionString("DeveloperDb"))
-                    .UseQueryTrackingBehavior(QueryTrackingBehavior.TrackAll)
-                    .EnableSensitiveDataLogging());
+            
             
             // Here we configure to ignore the infinite loops of relation/reference created by ef core
             services.AddControllersWithViews()
@@ -81,14 +96,15 @@ namespace Bank.API
             }
 
             app.UseRouting();
-
+            
+            app.UseAuthentication();
+            
+            app.UseAuthorization();
+            
             app.UseCors(x => x.AllowAnyHeader()
                 .AllowAnyMethod()
                 .AllowAnyOrigin());
 
-            app.UseAuthentication();
-            //TODO: use authorization;
-            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
