@@ -39,9 +39,8 @@ namespace Bank.API
                 options.AddPolicy("_myAllowSpecificOrigins",
                     builder =>
                     {
-                        builder.WithOrigins("http://localhost:4200", "http://localhost:6600", 
-                                            "https://super-stonks.herokuapp.com", 
-                                            "https://bankappapiv1.azurewebsites.net");
+                        builder.WithOrigins("http://localhost:4200",
+                            "http://localhost:6600");
                     });
             });
             
