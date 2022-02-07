@@ -17,12 +17,6 @@ namespace Bank.API.Controllers.Manager
         _logger = logger;
     }
 
-    public async Task<Data.Entities.Customer> GetCustomerAsync(int customerId)
-    {
-      // This is for a feature that will be implemented if I have enough time.
-      throw new System.NotImplementedException();
-    }
-
     public async Task<Data.Entities.Customer[]> GetAllCustomersAsync()
     {
       _logger.LogInformation($"Getting all customers");

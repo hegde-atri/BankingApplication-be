@@ -65,7 +65,6 @@ namespace Bank.API.Controllers.Officer
         return StatusCode(StatusCodes.Status500InternalServerError, e);
       }
 
-      return BadRequest();
     }
     
     [HttpPut("{addressId}")]

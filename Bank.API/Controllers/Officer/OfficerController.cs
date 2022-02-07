@@ -12,12 +12,12 @@ using Microsoft.AspNetCore.Routing;
 
 namespace Bank.API.Controllers.Officer
 {
+  [Authorize]
   [ApiController]
   [Route("/api/officer")]
   public class OfficerController: ControllerBase
   {
     // Dummy class used for testing, serves no purpose
-    // will be deleted later
 
     public OfficerController()
     {
@@ -27,7 +27,7 @@ namespace Bank.API.Controllers.Officer
     [HttpGet]
     public async Task<ActionResult> Get()
     {
-      // return StatusCode(StatusCodes.Status200OK, "method reached");
+      // Testing method
       return new JsonResult("METHOD REACHED");
     }
   }
