@@ -77,7 +77,7 @@ namespace Bank.API.Controllers.Officer
       // array and creates a stack for us.
       var reversed = new AccountModel[toReverse.Length];
       var stack = new Stack<AccountModel>(toReverse);
-      for (int i = 0; i < stack.Count; i++)
+      for (int i = 0; i < toReverse.Length; i++)
       {
         if (stack.Peek() != null)
         {
